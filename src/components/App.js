@@ -1,31 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import './App.css';
+// App.js
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Header from './Header';
+import TaskForm from './TaskForm';
+import Login from './auth/Login';
+import Signup from './auth/Signup';
 
-function App() {
-  const [message, setMessage] = useState('');
-
-  useEffect(() => {
-    fetch('/api/welcome')
-      .then(response => response.json())
-      .then(data => setMessage(data.message))
-      .catch(error => console.error('Error fetching data:', error));
-  }, []);
-
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>{message}</p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          ur mom
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Header />
+
+        <Routes>
+          <Route path="/tasks" element={<TaskForm />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          {/* ... other routes */}
+        </Routes>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;

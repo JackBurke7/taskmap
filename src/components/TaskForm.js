@@ -1,9 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
-import TaskForm from './TaskForm';
 
 const TaskForm = () => {
   const { addTask, editItem, editTask, user } = useContext(
-    TaskListContext
+    TaskForm
   );
 
   const [title, setTitle] = useState("");
